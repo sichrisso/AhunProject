@@ -1,5 +1,5 @@
-import 'package:ahun_project/presentation/common/color.dart';
 import 'package:flutter/material.dart';
+import 'color.dart';
 
 class AppFont {
   static const font1 = TextStyle(

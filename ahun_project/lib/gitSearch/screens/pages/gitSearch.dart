@@ -1,5 +1,5 @@
-import 'package:ahun_project/presentation/common/color.dart';
-import 'package:ahun_project/presentation/common/font.dart';
+import 'package:ahun_project/gitSearch/screens/common/color.dart';
+import 'package:ahun_project/gitSearch/screens/common/font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
