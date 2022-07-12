@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Search extends StatelessWidget {
+  final UsernameCtr = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +45,7 @@ class Search extends StatelessWidget {
               height: 30,
             ),
             TextField(
+              controller: UsernameCtr,
               cursorColor: AppColor.Color2,
               cursorRadius: Radius.circular(5.0),
               style: TextStyle(color: AppColor.Color2),
@@ -66,7 +68,12 @@ class Search extends StatelessWidget {
                           color: AppColor.Color1,
                         ),
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              final SearchBloc =
+                                  BlocProvider.of<GitSearchBloc>(context);
+                              SearchBloc.add(
+                                  search(username: UsernameCtr.text));
+                            },
                             child: Text(
                               "Search",
                               style: TextStyle(color: AppColor.Color2),

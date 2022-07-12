@@ -15,7 +15,7 @@ class AhunProject extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => gitSearchBloc..add(searchLoad()),
+      create: (context) => gitSearchBloc,
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,

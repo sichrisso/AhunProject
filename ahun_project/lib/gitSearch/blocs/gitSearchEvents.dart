@@ -1,21 +1,14 @@
 part of 'gitSearchBloc.dart';
 
-abstract class GitSearchEvents extends Equatable{
+abstract class GitSearchEvents {
   const GitSearchEvents();
-}
-
-class searchLoad extends GitSearchEvents{
-   const searchLoad();
-
-  @override
-  List<Object> get props => [];
 }
 
 class search extends GitSearchEvents {
   final String username;
-  const search(this.username);
+
+  search({required this.username});
 
   @override
   List<Object> get props => [username];
 }
-
