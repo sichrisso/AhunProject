@@ -1,6 +1,6 @@
 part of 'gitSearchBloc.dart';
 
-abstract class GitSearchState extends Equatable{
+abstract class GitSearchState extends Equatable {
   const GitSearchState();
 
   @override
@@ -12,12 +12,11 @@ class Idel extends GitSearchState {}
 class searchLoading extends GitSearchState {}
 
 class searchSuccess extends GitSearchState {
-  final Iterable<GitSearch> searches;
+  final GitSearch searches;
+  const searchSuccess(this.searches);
 
-  const searchSuccess([this.searches= const []]);
-
-  @override
-  List<Object> get props => [searches];
+  // @override
+  // List<Object> get props => [searches];
 }
 
 class searchFailed extends GitSearchState {

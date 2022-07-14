@@ -11,9 +11,12 @@ class GitSearchBloc extends Bloc<GitSearchEvents, GitSearchState> {
     on<search>((event, emit) async {
       emit(searchLoading());
       try {
-        final Search = await gitSearchRepository.fetchByUsername(event.username);
-        emit(searchSuccess());
+        final Search =
+            await gitSearchRepository.fetchByUsername(event.username);
+        print(Search);
+        emit(searchSuccess(Search));
       } catch (error) {
+        print(error);
         emit(searchFailed(error));
       }
     });

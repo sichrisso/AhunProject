@@ -33,10 +33,6 @@ class Search extends StatelessWidget {
                       Icons.light_mode,
                       color: AppColor.Color2,
                     )
-                    // Image.asset(
-                    //   "assets/icon-sun.svg",
-                    //   fit: BoxFit.cover,
-                    // ),
                   ],
                 )
               ],
@@ -93,7 +89,10 @@ class Search extends StatelessWidget {
                 );
               } else if (state is searchFailed) {
                 return const Center(
-                  child: Text("No User Found"),
+                  child: Text(
+                    "No Users Found",
+                    style: TextStyle(color: Colors.red),
+                  ),
                 );
               } else if (state is searchSuccess) {
                 return Container(
@@ -130,18 +129,32 @@ class Search extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "The Octocat",
+                                    state.searches.octocat,
                                     style: AppFont.font1,
                                   ),
-                                  Text("Joined 25 Jan 2011",
-                                      style: AppFont.font5)
+                                  Row(
+                                    children: [
+                                      Text("Joined", style: AppFont.font5),
+                                      Text(
+                                          "${DateTime.parse(state.searches.JoinedDate).day.toString().padLeft(2, '0')}-${DateTime.parse(state.searches.JoinedDate).month.toString().padLeft(2, '0')}-${DateTime.parse(state.searches.JoinedDate).year.toString()}",
+                                          style: AppFont.font5),
+                                    ],
+                                  )
                                 ],
                               ),
                               SizedBox(height: 5),
-                              Text("@octocat", style: AppFont.font3),
+                              Row(
+                                children: [
+                                  Text("@", style: AppFont.font3),
+                                  Text(state.searches.username,
+                                      style: AppFont.font3),
+                                ],
+                              ),
                               SizedBox(height: 15),
-                              Text("This profile has no bio",
-                                  style: AppFont.font2),
+                              Text(
+                                  state.searches.bio ??
+                                      "This profile has no bio",
+                                  style: AppFont.font5),
                               SizedBox(height: 15),
                               Container(
                                 decoration: BoxDecoration(
@@ -165,9 +178,16 @@ class Search extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Text("8", style: AppFont.font2),
-                                          Text("3938", style: AppFont.font2),
-                                          Text("9", style: AppFont.font2)
+                                          Text(state.searches.Repo.toString(),
+                                              style: AppFont.font2),
+                                          Text(
+                                              state.searches.followers
+                                                  .toString(),
+                                              style: AppFont.font2),
+                                          Text(
+                                              state.searches.following
+                                                  .toString(),
+                                              style: AppFont.font2)
                                         ],
                                       )
                                     ],
@@ -197,7 +217,9 @@ class Search extends StatelessWidget {
                                           //   "assets/icon-location.svg",
                                           //   fit: BoxFit.cover,
                                           // ),
-                                          Text("San Francisco",
+                                          Text(
+                                              state.searches.location ??
+                                                  "Not Available",
                                               style: AppFont.font2)
                                         ],
                                       ),
@@ -217,7 +239,9 @@ class Search extends StatelessWidget {
                                           //   "assets/icon-website.svg",
                                           //   fit: BoxFit.cover,
                                           // ),
-                                          Text("https://github.blog",
+                                          Text(
+                                              state.searches.htmlUrl ??
+                                                  "Not Available",
                                               style: AppFont.font2)
                                         ],
                                       )
@@ -244,7 +268,9 @@ class Search extends StatelessWidget {
                                           //   "assets/icon-twitter.svg",
                                           //   fit: BoxFit.cover,
                                           // ),
-                                          Text("Not Available",
+                                          Text(
+                                              state.searches.twitter ??
+                                                  "Not Available",
                                               style: AppFont.font2)
                                         ],
                                       ),
@@ -264,7 +290,10 @@ class Search extends StatelessWidget {
                                           //   "assets/icon-company.svg",
                                           //   fit: BoxFit.cover,
                                           // ),
-                                          Text("agithub", style: AppFont.font2)
+                                          Text(
+                                              state.searches.company ??
+                                                  "Not Available",
+                                              style: AppFont.font2)
                                         ],
                                       )
                                     ],

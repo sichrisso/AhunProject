@@ -1,19 +1,21 @@
 class GitSearch {
   final int id;
+  final String profile;
   final String octocat;
   final String username;
-  final String bio;
-  final String location;
+  final String? bio;
+  final String? location;
   final String JoinedDate;
   final int Repo;
   final int followers;
   final int following;
-  final String htmlUrl;
-  final String twitter;
-  final String company;
+  final String? htmlUrl;
+  final String? twitter;
+  final String? company;
 
   GitSearch(
       {required this.id,
+      required this.profile,
       required this.octocat,
       required this.username,
       required this.bio,
@@ -29,16 +31,17 @@ class GitSearch {
   factory GitSearch.fromJson(Map<String, dynamic> json) {
     return GitSearch(
       id: json['id'],
-      octocat: json['octocat'],
-      username: json['username'],
+      profile: json['avatar_url'],
+      octocat: json['name'],
+      username: json['login'],
       bio: json['bio'],
       location: json['location'],
-      JoinedDate: json['JoinedDate'],
-      Repo: json['Repo'],
+      JoinedDate: json['created_at'],
+      Repo: json['public_repos'],
       followers: json['followers'],
       following: json['following'],
-      htmlUrl: json['htmlUrl'],
-      twitter: json['twitter'],
+      htmlUrl: json['html_url'],
+      twitter: json['twitter_username'],
       company: json['company'],
     );
   }
