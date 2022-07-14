@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class GitSearch {
   final int id;
   final String profile;

@@ -15,7 +15,6 @@ void main() {
       final searchButton = find.byKey(Key("search"));
 
       await tester.tap(searchButton);
-      assert(Response.StatusCode, HttpStatusCode.OK);
       tester.pumpAndSettle();
     });
   });

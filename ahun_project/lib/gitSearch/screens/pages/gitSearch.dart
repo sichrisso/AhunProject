@@ -3,6 +3,7 @@ import 'package:ahun_project/gitSearch/screens/common/color.dart';
 import 'package:ahun_project/gitSearch/screens/common/font.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Search extends StatelessWidget {
   final UsernameCtr = TextEditingController();
@@ -46,7 +47,7 @@ class Search extends StatelessWidget {
               cursorRadius: Radius.circular(5.0),
               style: TextStyle(color: AppColor.Color2),
               decoration: InputDecoration(
-                  hintText: "Search GitHub username...",
+                  hintText: "Search GitHub Username...",
                   hintStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -106,18 +107,16 @@ class Search extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Expanded(
-                          flex: 1,
-                          child: Container(
-                            width: 60,
-                            height: 60,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.teal),
-                            child: Icon(
-                              Icons.home_filled,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+                            flex: 1,
+                            child: Container(
+                                width: 100,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle, color: Colors.teal),
+                                child: CircleAvatar(
+                                  backgroundImage:
+                                      NetworkImage(state.searches.profile),
+                                ))),
                         Expanded(
                           flex: 3,
                           child: Column(
@@ -135,6 +134,9 @@ class Search extends StatelessWidget {
                                   Row(
                                     children: [
                                       Text("Joined", style: AppFont.font5),
+                                      SizedBox(
+                                        width: 8,
+                                      ),
                                       Text(
                                           "${DateTime.parse(state.searches.JoinedDate).day.toString().padLeft(2, '0')}-${DateTime.parse(state.searches.JoinedDate).month.toString().padLeft(2, '0')}-${DateTime.parse(state.searches.JoinedDate).year.toString()}",
                                           style: AppFont.font5),
@@ -213,10 +215,6 @@ class Search extends StatelessWidget {
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          // Image.asset(
-                                          //   "assets/icon-location.svg",
-                                          //   fit: BoxFit.cover,
-                                          // ),
                                           Text(
                                               state.searches.location ??
                                                   "Not Available",
@@ -235,20 +233,18 @@ class Search extends StatelessWidget {
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          // Image.asset(
-                                          //   "assets/icon-website.svg",
-                                          //   fit: BoxFit.cover,
-                                          // ),
-                                          Text(
-                                              state.searches.htmlUrl ??
-                                                  "Not Available",
-                                              style: AppFont.font2)
+                                          TextButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                  state.searches.htmlUrl ??
+                                                      "Not Available",
+                                                  style: AppFont.font2))
                                         ],
                                       )
                                     ],
                                   ),
                                   SizedBox(
-                                    width: 250,
+                                    width: 200,
                                   ),
                                   Column(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -258,20 +254,18 @@ class Search extends StatelessWidget {
                                       Row(
                                         children: [
                                           Icon(
-                                            Icons.location_on,
+                                            FontAwesomeIcons.twitter,
                                             color: AppColor.Color2,
                                           ),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          // Image.asset(
-                                          //   "assets/icon-twitter.svg",
-                                          //   fit: BoxFit.cover,
-                                          // ),
-                                          Text(
-                                              state.searches.twitter ??
-                                                  "Not Available",
-                                              style: AppFont.font2)
+                                          TextButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                  state.searches.twitter ??
+                                                      "Not Available",
+                                                  style: AppFont.font2))
                                         ],
                                       ),
                                       SizedBox(
@@ -280,20 +274,18 @@ class Search extends StatelessWidget {
                                       Row(
                                         children: [
                                           Icon(
-                                            Icons.abc,
+                                            Icons.business_rounded,
                                             color: AppColor.Color2,
                                           ),
                                           SizedBox(
                                             width: 5,
                                           ),
-                                          // Image.asset(
-                                          //   "assets/icon-company.svg",
-                                          //   fit: BoxFit.cover,
-                                          // ),
-                                          Text(
-                                              state.searches.company ??
-                                                  "Not Available",
-                                              style: AppFont.font2)
+                                          TextButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                  state.searches.company ??
+                                                      "Not Available",
+                                                  style: AppFont.font2))
                                         ],
                                       )
                                     ],
